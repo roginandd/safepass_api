@@ -14,6 +14,6 @@ public class SystemUserResponseDTO {
 
     private String email;
     private String username;
-    private String contactNo;
+    private String contactNumber;
     private SystemUserRole role;
 }

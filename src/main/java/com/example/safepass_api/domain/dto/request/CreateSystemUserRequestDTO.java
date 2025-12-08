@@ -10,4 +10,6 @@ public class CreateSystemUserRequestDTO {
     private String middleName;
     private String lastName;
     private String email;
+    private String contactNumber;
+
 }
