@@ -1,5 +1,8 @@
 package com.example.safepass_api.domain.dto.request;
 
+import lombok.Data;
+
+@Data
 public class CreateSystemUserRequestDTO {
     private String username;
     private String password;
