@@ -5,14 +5,10 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.safepass_api.domain.dto.request.CreateSystemUserRequestDTO;
 import com.example.safepass_api.domain.dto.response.SystemUserResponseDTO;
-import com.example.safepass_api.exception.BadRequestException;
 import com.example.safepass_api.exception.ResourceNotFoundException;
 import com.example.safepass_api.service.SystemUserService;
 
@@ -28,19 +24,7 @@ public class SystemUserController {
     @GetMapping("/all")
     public ResponseEntity<List<SystemUserResponseDTO>> getAllSystemUsers() {
         List<SystemUserResponseDTO> systemUsers = systemUserService.getAllSystemUsers();
-        
-    
-        
         return ResponseEntity.ok(systemUsers);
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<SystemUserResponseDTO> createSystemUser(@RequestBody CreateSystemUserRequestDTO createSystemUserRequestDTO) {
-        SystemUserResponseDTO createdSystemUser = systemUserService
-            .createSystemUser(createSystemUserRequestDTO)
-            .orElseThrow(() -> new BadRequestException("Failed to create System User"));
-
-        return ResponseEntity.ok(createdSystemUser);
     }
 
     @GetMapping("/{id}")
@@ -60,6 +44,4 @@ public class SystemUserController {
 
         return ResponseEntity.ok(systemUser);
     }
-    
-    
 }
