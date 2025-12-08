@@ -1,7 +1,9 @@
 package com.example.safepass_api.mapper;
 
 import org.mapstruct.Mapper;
+import org.springframework.security.core.session.SessionCreationEvent;
 
+import com.example.safepass_api.domain.dto.request.CreateSystemUserRequestDTO;
 import com.example.safepass_api.domain.dto.response.SystemUserResponseDTO;
 import com.example.safepass_api.domain.entity.SystemUser;
 
@@ -13,7 +15,7 @@ public interface SystemUserMapper {
     SystemUserResponseDTO toResponseDTO(SystemUser systemUser);
 
 
-    SystemUser toEntity(SystemUserResponseDTO systemUserResponseDTO);
+    SystemUser toEntity(CreateSystemUserRequestDTO createSystemUserRequestDTO);
 
 
 }
