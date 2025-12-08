@@ -13,12 +13,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class StakeHolderResponseDTO {
     private String id;
+
     private String firstName;
     private String middleName;
     private String lastName;
+
     private String email;
     private String contactNo;
     private StakeHolderStatus status;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+
+    
 }
