@@ -8,10 +8,13 @@ import org.springframework.stereotype.Service;
 import com.example.safepass_api.domain.dto.request.CreateSystemUserRequestDTO;
 import com.example.safepass_api.domain.dto.response.SystemUserResponseDTO;
 import com.example.safepass_api.domain.entity.SystemUser;
+import com.example.safepass_api.domain.enums.SystemUserRole;
+import com.example.safepass_api.exception.BadRequestException;
+import com.example.safepass_api.exception.ConflictException;
+import com.example.safepass_api.exception.ResourceNotFoundException;
 import com.example.safepass_api.mapper.SystemUserMapper;
 import com.example.safepass_api.repository.SystemUserRepository;
 import com.example.safepass_api.service.SystemUserService;
-import com.example.safepass_api.domain.enums.SystemUserRole;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,7 +29,6 @@ public class SystemUserServiceImpl implements  SystemUserService{
 
     @Override
     public List<SystemUserResponseDTO> getAllSystemUsers() {
-        
         return systemUserRepository.findAll()
                 .stream()
                 .map(systemUserMapper::toResponseDTO)
@@ -35,12 +37,11 @@ public class SystemUserServiceImpl implements  SystemUserService{
 
     @Override
     public Optional<SystemUserResponseDTO> getSystemUserById(String id) {
-        SystemUser existingSystemUser = systemUserRepository.findById(id).orElseThrow(() -> {
-            throw new RuntimeException("System User not found");
-        });
+        SystemUser existingSystemUser = systemUserRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("System User not found"));
+
 
         SystemUserResponseDTO responseDTO = systemUserMapper.toResponseDTO(existingSystemUser);
-
+        
         return Optional.of(responseDTO);
 
     }
@@ -48,9 +49,7 @@ public class SystemUserServiceImpl implements  SystemUserService{
     
     @Override
     public Optional<SystemUserResponseDTO> getSystemUserByUsername(String username) {
-        SystemUser existingSystemUser = systemUserRepository.findByUsername(username).orElseThrow(() -> {
-            throw new RuntimeException("System User not found");
-        });
+        SystemUser existingSystemUser = systemUserRepository.findByUsername(username).orElseThrow(() -> new ResourceNotFoundException("System User not found"));
 
         SystemUserResponseDTO responseDTO = systemUserMapper.toResponseDTO(existingSystemUser);
 
@@ -77,12 +76,12 @@ public class SystemUserServiceImpl implements  SystemUserService{
             firstName == null || firstName.isEmpty() ||
             lastName == null || lastName.isEmpty() ||
             contactNumber == null || contactNumber.isEmpty()) {
-            throw new RuntimeException("Empty Fields");
+            throw new BadRequestException("Empty Fields");
         }
 
 
         if (existingSystemUser != null) {
-            return Optional.empty();
+            throw new ConflictException("System User with the same username already exists");
         }
 
         SystemUser systemUserEntity = systemUserMapper.toEntity(createSystemUserRequestDTO);
