@@ -47,7 +47,7 @@ public class StakeHolder {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StakeHolderStatus status = StakeHolderStatus.PENDING;
+    private StakeHolderStatus status;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -73,6 +73,7 @@ public class StakeHolder {
         this.id = java.util.UUID.randomUUID().toString();
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
+        this.status = StakeHolderStatus.PENDING;
     }
 
     @PreUpdate
