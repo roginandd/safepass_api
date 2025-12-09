@@ -8,7 +8,9 @@ import lombok.Data;
 @Data
 @Builder
 public class VisitorEntryLogRequestDTO {
-   
+    private String visitorId;
+
+
     // basic credentials
     private String firstName;
     private String middleName;
