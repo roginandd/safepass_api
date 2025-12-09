@@ -66,8 +66,7 @@ public class SystemUser {
     @OneToMany(mappedBy = "reviewer", cascade = CascadeType.ALL)
     private List<StakeHolderApproval> stakeholderApprovals;
 
-    @OneToMany(mappedBy = "reviewer", cascade = CascadeType.ALL)
-    private List<DocumentReview> documentReviews;
+
 
     @OneToMany(mappedBy = "issuer", cascade = CascadeType.ALL)
     private List<StakeHolderQrCode> qrCodesIssued;
@@ -76,9 +75,6 @@ public class SystemUser {
     private List<EntryLog> entryLogs;
 
     // Renamed to match the explicit relation in Prisma: @relation("VerifiedBy")
-    @OneToMany(mappedBy = "verifier", cascade = CascadeType.ALL)
-    private List<VisitorSession> visitorSessionsVerified;
-
     @PrePersist
     protected void onCreate() {
         this.id = java.util.UUID.randomUUID().toString();

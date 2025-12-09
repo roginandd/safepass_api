@@ -37,9 +37,6 @@ public class Documents {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    // Relationships
-    @OneToMany(mappedBy = "document", cascade = CascadeType.ALL)
-    private List<DocumentReview> documentReviews;
 
     @PrePersist
     protected void onCreate() {

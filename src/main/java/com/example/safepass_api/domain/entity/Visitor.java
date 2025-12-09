@@ -29,7 +29,9 @@ public class Visitor {
     
     @Column(nullable = false, unique = true)
     private String contactNo;
-    // ---------------------------------
+    
+     @Column(nullable = false)
+    private String purposeOfVisit;
     
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -37,9 +39,6 @@ public class Visitor {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    // Relationships
-    @OneToMany(mappedBy = "visitor", cascade = CascadeType.ALL)
-    private List<VisitorSession> visitorSessions;
 
     @PrePersist
     protected void onCreate() {
