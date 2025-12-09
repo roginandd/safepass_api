@@ -6,21 +6,15 @@ import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Data;
 
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class StakeHolderEntryLogRequestDTO {
     private String stakeHolderId;
-    
-    // basic credentials
-    private String firstName;
-    private String middleName;
-    private String lastName;
-
-    // contact details
-    private String email;
-    private String contactNo;
-    
-
-    // entry time
+    private String systemUserId;
     private LocalDateTime entryTime;
 }

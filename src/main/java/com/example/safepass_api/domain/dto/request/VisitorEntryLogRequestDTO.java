@@ -10,15 +10,6 @@ import lombok.Data;
 public class VisitorEntryLogRequestDTO {
     private String visitorId;
 
-
-    // basic credentials
-    private String firstName;
-    private String middleName;
-    private String lastName;
-
-    // contact details
-    private String email;
-    private String contactNo;
     private String purposeOfVisit;
 
     private LocalDateTime entryTime;

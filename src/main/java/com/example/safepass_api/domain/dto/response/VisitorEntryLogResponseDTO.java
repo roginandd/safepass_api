@@ -6,6 +6,8 @@ import lombok.Data;
 @Data
 @Builder
 public class VisitorEntryLogResponseDTO {
+    private String id;
+
     private String visitorId;
     private String firstName;
     private String middleName;
