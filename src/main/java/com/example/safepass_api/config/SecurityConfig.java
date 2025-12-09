@@ -29,6 +29,7 @@ public class SecurityConfig {
             .cors(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(req -> req
                 .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/stake-holders/create-with-documents").permitAll()
                 .anyRequest()
                 .authenticated()
             )
