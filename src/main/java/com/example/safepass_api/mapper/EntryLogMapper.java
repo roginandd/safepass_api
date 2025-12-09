@@ -14,6 +14,7 @@ import com.example.safepass_api.domain.entity.EntryLog;
 public interface EntryLogMapper {
 
     // From Entity to StakeHolderEntryLogResponseDTO
+    @Mapping(target = "id", source = "id")
     @Mapping(target = "stakeHolderId", source = "stakeHolder.id")
     @Mapping(target = "firstName", source = "stakeHolder.firstName")
     @Mapping(target = "middleName", source = "stakeHolder.middleName")
@@ -22,6 +23,7 @@ public interface EntryLogMapper {
     StakeHolderEntryLogResponseDTO toStakeHolderEntryLogResponseDTO(EntryLog entryLog);
 
     // From Entity to VisitorEntryLogResponseDTO
+    @Mapping(target = "id", source = "id")
     @Mapping(target = "visitorId", source = "visitorSession.visitor.id")
     @Mapping(target = "firstName", source = "visitorSession.visitor.firstName")
     @Mapping(target = "middleName", source = "visitorSession.visitor.middleName")
@@ -33,22 +35,11 @@ public interface EntryLogMapper {
 
     // From StakeHolderEntryLogRequestDTO to EntryLog entity
     @Mapping(target = "entryTime", source = "entryTime")
-    @Mapping(target = "stakeHolder.firstName", source = "firstName")
-    @Mapping(target = "stakeHolder.middleName", source = "middleName")
-    @Mapping(target = "stakeHolder.lastName", source = "lastName")
-    @Mapping(target = "stakeHolder.email", source = "email")
-    @Mapping(target = "stakeHolder.contactNo", source = "contactNo")
     @Mapping(target = "stakeHolder.id", source = "stakeHolderId")
     EntryLog toEntity(StakeHolderEntryLogRequestDTO dto);
 
     // From VisitorEntryLogRequestDTO to EntryLog entity
     @Mapping(target = "visitorSession.id", source = "visitorId")
-    @Mapping(target = "entryTime", source = "entryTime")
-    @Mapping(target = "visitorSession.visitor.firstName", source = "firstName")
-    @Mapping(target = "visitorSession.visitor.middleName", source = "middleName")
-    @Mapping(target = "visitorSession.visitor.lastName", source = "lastName")
-    @Mapping(target = "visitorSession.purposeOfVisit", source = "purposeOfVisit")
-    @Mapping(target = "visitorSession.visitor.email", source = "email")
-    @Mapping(target = "visitorSession.visitor.contactNo", source = "contactNo")
+    @Mapping(target = "entryTime", source = "entryTime") 
     EntryLog toEntity(VisitorEntryLogRequestDTO dto);    
 }
