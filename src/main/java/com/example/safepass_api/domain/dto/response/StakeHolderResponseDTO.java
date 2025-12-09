@@ -1,6 +1,7 @@
 package com.example.safepass_api.domain.dto.response;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.example.safepass_api.domain.enums.StakeHolderStatus;
 
@@ -20,6 +21,8 @@ public class StakeHolderResponseDTO {
 
     private String email;
     private String contactNo;
+
+    private List<DocumentResponseDTO> documents;
     private StakeHolderStatus status;
 
     

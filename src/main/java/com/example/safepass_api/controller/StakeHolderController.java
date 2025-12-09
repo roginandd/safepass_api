@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.safepass_api.domain.dto.request.CreateStakeHolderRequestDTO;
+import com.example.safepass_api.domain.dto.request.CreateStakeHolderWithDocumentsRequestDTO;
 import com.example.safepass_api.domain.dto.request.UpdateStakeHolderRequestDTO;
 import com.example.safepass_api.domain.dto.response.StakeHolderResponseDTO;
 import com.example.safepass_api.exception.ResourceNotFoundException;
@@ -55,6 +57,18 @@ public class StakeHolderController {
         StakeHolderResponseDTO createdStakeHolder = stakeHolderService.createStakeHolder(createRequest)
                 .orElseThrow(() -> new RuntimeException("Failed to create StakeHolder"));
                 
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdStakeHolder);
+    }
+
+    /**
+     * Create a new stake holder with required documents
+     */
+    @PostMapping("/create-with-documents")
+    public ResponseEntity<StakeHolderResponseDTO> createStakeHolderWithDocuments(
+            @ModelAttribute CreateStakeHolderWithDocumentsRequestDTO createRequest) {
+        StakeHolderResponseDTO createdStakeHolder = stakeHolderService.createStakeHolderWithDocuments(createRequest)
+                .orElseThrow(() -> new RuntimeException("Failed to create StakeHolder with documents"));
+
         return ResponseEntity.status(HttpStatus.CREATED).body(createdStakeHolder);
     }
 

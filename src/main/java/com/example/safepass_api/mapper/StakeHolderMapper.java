@@ -4,10 +4,11 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import com.example.safepass_api.domain.dto.request.CreateStakeHolderRequestDTO;
+import com.example.safepass_api.domain.dto.request.CreateStakeHolderWithDocumentsRequestDTO;
 import com.example.safepass_api.domain.dto.response.StakeHolderResponseDTO;
 import com.example.safepass_api.domain.entity.StakeHolder;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {DocumentMapper.class})
 public interface StakeHolderMapper {
     
     StakeHolderResponseDTO toResponseDTO(StakeHolder stakeHolder);
@@ -21,4 +22,6 @@ public interface StakeHolderMapper {
     @Mapping(target = "qrCodes", ignore = true)
     @Mapping(target = "entryLogs", ignore = true)
     StakeHolder toEntity(CreateStakeHolderRequestDTO createRequest);
+
+
 }

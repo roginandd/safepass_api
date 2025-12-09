@@ -21,6 +21,8 @@ public class S3Service {
     private final String bucketName;
     private final S3Client s3Client;
 
+
+
     public S3Service(
             @Value("${aws.access.key.id:}") String accessKeyId,
             @Value("${aws.secret.access.key:}") String secretAccessKey,
@@ -45,16 +47,20 @@ public class S3Service {
      */
     public String uploadFile(MultipartFile file, String stakeHolderId) throws IOException {
         String fileName = generateFileName(stakeHolderId, file.getOriginalFilename());
-        
+
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(bucketName)
                 .key(fileName)
+                .contentType(file.getContentType())
+                .contentDisposition("inline")   // <<< makes browser view instead of download
                 .build();
 
-        s3Client.putObject(putObjectRequest, software.amazon.awssdk.core.sync.RequestBody.fromBytes(file.getBytes()));
-        
+        s3Client.putObject(putObjectRequest,
+                software.amazon.awssdk.core.sync.RequestBody.fromBytes(file.getBytes()));
+
         return fileName;
     }
+
 
     /**
      * Download file from S3

@@ -7,4 +7,6 @@ import com.example.safepass_api.domain.entity.StakeHolder;
 
 @Repository
 public interface StakeHolderRepository extends JpaRepository<StakeHolder, String> {
+    boolean existsByEmail(String email);
+    boolean existsByContactNo(String contactNo);
 }

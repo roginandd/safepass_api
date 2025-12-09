@@ -16,6 +16,4 @@ public class DocumentResponseDTO {
     private String stakeHolderId;
     private String fileName;
     private DocumentType documentType;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }
