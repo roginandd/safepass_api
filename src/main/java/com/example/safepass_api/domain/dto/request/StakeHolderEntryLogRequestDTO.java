@@ -9,6 +9,8 @@ import lombok.Data;
 @Data
 @Builder
 public class StakeHolderEntryLogRequestDTO {
+    private String stakeHolderId;
+    
     // basic credentials
     private String firstName;
     private String middleName;
@@ -17,6 +19,7 @@ public class StakeHolderEntryLogRequestDTO {
     // contact details
     private String email;
     private String contactNo;
+    
 
     // entry time
     private LocalDateTime entryTime;

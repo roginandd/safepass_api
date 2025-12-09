@@ -17,6 +17,7 @@ public class VisitorEntryLogRequestDTO {
     // contact details
     private String email;
     private String contactNo;
+    private String purposeOfVisit;
 
     private LocalDateTime entryTime;
 }
