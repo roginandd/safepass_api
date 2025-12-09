@@ -16,8 +16,8 @@ import com.example.safepass_api.domain.dto.response.AuthResponseDTO;
 import com.example.safepass_api.domain.dto.response.SystemUserResponseDTO;
 import com.example.safepass_api.exception.BadRequestException;
 import com.example.safepass_api.exception.ResourceNotFoundException;
-import com.example.safepass_api.service.JwtService;
 import com.example.safepass_api.service.SystemUserService;
+import com.example.safepass_api.service.impl.JwtService;
 
 import lombok.RequiredArgsConstructor;
 

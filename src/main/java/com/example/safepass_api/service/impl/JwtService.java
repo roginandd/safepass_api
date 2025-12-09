@@ -1,4 +1,4 @@
-package com.example.safepass_api.service;
+package com.example.safepass_api.service.impl;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;

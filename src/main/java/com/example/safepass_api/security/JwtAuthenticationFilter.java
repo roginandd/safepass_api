@@ -8,7 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.example.safepass_api.service.JwtService;
+import com.example.safepass_api.service.impl.JwtService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
