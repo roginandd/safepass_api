@@ -24,11 +24,11 @@ public interface EntryLogMapper {
 
     // From Entity to VisitorEntryLogResponseDTO
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "visitorId", source = "visitorSession.visitor.id")
-    @Mapping(target = "firstName", source = "visitorSession.visitor.firstName")
-    @Mapping(target = "middleName", source = "visitorSession.visitor.middleName")
-    @Mapping(target = "lastName", source = "visitorSession.visitor.lastName")
-    @Mapping(target = "purposeOfVisit", source = "visitorSession.purposeOfVisit")
+    @Mapping(target = "visitorId", source = "visitor.id")
+    @Mapping(target = "firstName", source = "visitor.firstName")
+    @Mapping(target = "middleName", source = "visitor.middleName")
+    @Mapping(target = "lastName", source = "visitor.lastName")
+    @Mapping(target = "purposeOfVisit", source = "visitor.purposeOfVisit")
     @Mapping(target = "entryTime", source = "entryTime")
     @Mapping(target = "exitTime", source = "exitTime")
     VisitorEntryLogResponseDTO toVisitorEntryLogResponseDTO(EntryLog entryLog);
@@ -39,7 +39,7 @@ public interface EntryLogMapper {
     EntryLog toEntity(StakeHolderEntryLogRequestDTO dto);
 
     // From VisitorEntryLogRequestDTO to EntryLog entity
-    @Mapping(target = "visitorSession.id", source = "visitorId")
+    @Mapping(target = "visitor.id", source = "visitorId")
     @Mapping(target = "entryTime", source = "entryTime") 
     EntryLog toEntity(VisitorEntryLogRequestDTO dto);    
 }

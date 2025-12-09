@@ -19,6 +19,5 @@ public interface DocumentMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "stakeHolder", ignore = true)
-    @Mapping(target = "documentReviews", ignore = true)
     Documents toEntity(UploadDocumentRequestDTO uploadRequest);
 }
