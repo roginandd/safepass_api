@@ -32,8 +32,6 @@ public class PassInventory {
     private LocalDateTime updatedAt;
 
     // Relationships: One-to-one mapping
-    @OneToOne(mappedBy = "passInventory")
-    private VisitorSession visitorSession;
 
     @PrePersist
     protected void onCreate() {

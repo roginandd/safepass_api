@@ -32,8 +32,8 @@ public class EntryLog {
 
     // Foreign Key to VisitorSession (Nullable, ON DELETE SET NULL)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "visitorSessionId")
-    private VisitorSession visitorSession;
+    @JoinColumn(name = "visitorId")
+    private Visitor visitor;
 
     // Foreign Key to StakeHolder (Nullable, ON DELETE SET NULL)
     @ManyToOne(fetch = FetchType.LAZY)
