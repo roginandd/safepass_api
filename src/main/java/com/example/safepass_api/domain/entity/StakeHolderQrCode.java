@@ -24,8 +24,6 @@ public class StakeHolderQrCode {
     @Column(nullable = false)
     private QrCodeStatus status = QrCodeStatus.ACTIVE;
 
-    @Column(nullable = false)
-    private LocalDateTime issuedAt = LocalDateTime.now();
 
     @Column(nullable = false)
     private LocalDateTime expiresAt;
@@ -51,8 +49,10 @@ public class StakeHolderQrCode {
     @PrePersist
     protected void onCreate() {
         this.id = java.util.UUID.randomUUID().toString();
+        this.code = java.util.UUID.randomUUID().toString();
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
+        this.expiresAt = this.createdAt.plusYears(1); // Default expiry: 1 year from creation
     }
 
     @PreUpdate
